@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Post a New Message
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card color="dark">
+    <ion-card-content>
+      <ion-item color="dark">
+        <ion-label position="stacked">Your message</ion-label>
+        <ion-input [(ngModel)]="post.text"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark">
+        <ion-label position="stacked">Image Url:</ion-label>
+        <ion-input [(ngModel)]="post.imageUrl"></ion-input>
+      </ion-item>
+      
+      <ion-item color="dark">
+        <ion-label position="stacked">To:</ion-label>
+        <ion-select [(ngModel)]="post.to">
+        <ion-select-option value="Everyone">Everyone</ion-select-option>
+        <ion-select-option *ngFor="let friend of myFriends" [value]="friend.name">{{friend.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button (click)="sendMessage()" expand="block" color="primary">Sumbit Post</ion-button>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+<!-- HOMEWORK -->
+<!-- Look on the internet how to put a background color or IMG
+    Change the shade to the styles, an icon on the button,
+    Work on the style of the page
+    ionic 5 set backgrond color/picture -->
+<!-- https://insights.stackoverflow.com/survey/2019 -->
+<!-- hackerrank and leetcode -->

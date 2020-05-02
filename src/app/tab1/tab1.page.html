@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="dark">
+
+    <ion-buttons slot="primary">
+      <ion-icon name="funnel-outline"></ion-icon>
+      <ion-select [(ngModel)]="friendFilter" name="friendFilter">
+        <ion-select-option value="Everyone">Everyone</ion-select-option>
+
+        <ion-select-option *ngFor="let friend of myFriends" [value]="friend.name">{{friend.name}}</ion-select-option>
+      </ion-select>
+    </ion-buttons>
+
+    <ion-title>
+      Feed
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+
+  <h1>Hello Ionic!</h1>
+  <h2>Leonardo Weller</h2>
+  <button>This is an HTML Button</button>
+  <br>
+  <ion-button color="secondary">Ionic</ion-button>
+
+</ion-content> -->
+
+<!-- <ion-content class="back">
+  <ul>
+    <li *ngFor="let message of allMessages">{{message.text}}</li>
+  </ul>
+</ion-content> -->
+<ion-content>
+  <ion-card *ngFor="let message of getMessagesToDisplay()" [class.my-message]="message.from == shared.userName">
+    <div *ngIf="message.from == friendFilter || message.from == shared.userName">
+      <ion-card-content class="back" *ngIf="message.imageUrl">
+        <img src="{{message.imageUrl}}">
+      </ion-card-content>
+      <ion-card-header>
+        <ion-card-title>{{message.from}}</ion-card-title>
+        <ion-card-subtitle>{{message.text}}</ion-card-subtitle>
+      </ion-card-header>
+    </div>
+  </ion-card>
+</ion-content>
